@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-xs-12 col-md-6 offset-md-3">
+        <form [formGroup]="form" (ngSubmit)="save()">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    formControlName="name"
+                    placeholder="Enter the student's name"
+                />
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    formControlName="email"
+                    placeholder="Enter the student's email"
+                />
+            </div>
+            <div class="form-group">
+                <label for="currentLevel">Current Level</label>
+                <app-select-level
+                    [shorten]="true"
+                    selectId="currentLevel"
+                    formControlName="currentLevel"
+                ></app-select-level>
+            </div>
+            <div class="form-group">
+                <label for="newLevel">New Level</label>
+                <app-select-level
+                    [shorten]="true"
+                    selectId="newLevel"
+                    formControlName="newLevel"
+                ></app-select-level>
+            </div>
+
+            <div class="actions">
+                <button class="btn btn-primary" type="submit">OK</button>
+            </div>
+        </form>
+    </div>
+</div>
