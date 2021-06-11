@@ -1,0 +1,41 @@
+<div class="modal-header">
+    <h4 class="modal-title">Student Evaluation</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+    <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<form [formGroup]="form" (ngSubmit)="save()">
+    <div class="modal-body d-flex justify-content-center align-items-center flex-column">
+        <div class="details d-flex justify-content-center align-items-center flex-column">
+            <h5 class="align-center">{{ evaluation.name }}</h5>
+            <small>{{ evaluation.email }}</small>
+            <div class="mt-3">
+                <span class="badge level {{evaluation.currentLevel}}">{{evaluation.currentLevel | level}}</span>
+                <span class="badge dancing-role {{evaluation.dancingRole}}">{{evaluation.dancingRole | dancingRole}}</span>
+            </div>
+        </div>
+        <div class="mt-4">
+            <app-timer-button></app-timer-button>
+        </div>
+        <div class="mt-4">
+            <label for="newLevel" class="mb-2">New Level</label>
+            <app-select-level selectId="newLevel" formControlName="newLevel" [allowUnknown]="false"></app-select-level>
+        </div>
+        <div class="mt-4 results" *ngIf="form.value.newLevel">
+            <p>{{evaluation.name.split(" ")[0]}} will go from <strong>{{evaluation.currentLevel | level:true}}</strong> to <strong>{{form.value.newLevel | level:true}}</strong> as a <strong>{{evaluation.dancingRole | dancingRole}}</strong></p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button
+            type="button"
+            class="btn btn-outline-danger"
+            (click)="activeModal.dismiss()">
+            Cancel
+        </button>
+        <button
+            type="submit"
+            class="btn btn-success">
+            Confirm
+        </button>
+    </div>
+</form>

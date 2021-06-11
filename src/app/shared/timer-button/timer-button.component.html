@@ -1,0 +1,4 @@
+<div class="timer btn btn-outline-dark" [class.timeout]="timeLeft === 0" (click)="toggle()">
+    <p>{{timeLeft | secondsToMinutes }}<p>
+    <small>Click to {{actionText}}</small>
+</div>

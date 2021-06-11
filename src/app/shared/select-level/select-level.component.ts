@@ -12,8 +12,8 @@ import { Level } from "../model/level.enum";
     selector: "app-select-level",
     template: `
         <select [id]="selectId" [formControl]="control" class="form-control">
-            <option></option>
-            <option *ngFor="let level of LEVELS">{{ level | level:shorten }}</option>
+            <option value="" disabled selected>Select a level</option>
+            <option *ngFor="let level of acceptedValues" [value]="level">{{ level | level:shorten }}</option>
         </select>
     `,
     styles: [``],
@@ -33,6 +33,7 @@ export class SelectLevelComponent implements ControlValueAccessor {
     @Input() formControlName: string;
     @Input() selectId: string = "";
     @Input() shorten = false;
+    @Input() allowUnknown = true;
 
     constructor(private controlContainer: ControlContainer) {}
 
@@ -65,5 +66,9 @@ export class SelectLevelComponent implements ControlValueAccessor {
 
     get directiveValueAccessor() {
         return this.formControlDirective.valueAccessor;
+    }
+
+    get acceptedValues() {
+        return this.allowUnknown ? this.LEVELS : this.LEVELS.filter(lvl => lvl !== Level.UNKNOWN);
     }
 }

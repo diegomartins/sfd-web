@@ -23,7 +23,7 @@ export class LevelPipe implements PipeTransform {
             case Level.INTERMEDIATE_2:
                 return shorten ? "Int 2" : "Intermediate 2";
             default:
-                return "Unknown";
+                return "Unknown level";
         }
     }
 }

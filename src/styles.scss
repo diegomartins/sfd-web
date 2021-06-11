@@ -1,1 +1,47 @@
+@import "sfd-theme.scss";
 @import "~bootstrap/scss/bootstrap.scss";
+
+
+$leaderColor: #008094;
+$followerColor: #5a0044;
+
+$ncColor: #ffffff;
+$b1Color: #bdb102;
+$b2Color: #3ba000;
+$int1Color: #00025f;
+$int2Color: #b6000f;
+$unknownLevelColor: #e25300;
+
+.badge {
+    &.dancing-role {
+        &.LEADER {
+            background-color: $leaderColor;
+        }
+        &.FOLLOWER {
+            background-color: $followerColor;
+        }
+    }
+
+    &.level {
+        &.NEWCOMER {
+            background-color: $ncColor;
+            border: 1px solid black;
+            color: black;
+        }
+        &.B1 {
+            background-color: $b1Color;
+        }
+        &.B2 {
+            background-color: $b2Color;
+        }
+        &.INTERMEDIATE_1 {
+            background-color: $int1Color;
+        }
+        &.INTERMEDIATE_2 {
+            background-color: $int2Color;
+        }
+        &:not(.NEWCOMER, .B1, .B2, .INTERMEDIATE_1, .INTERMEDIATE_2) {
+            background-color: $unknownLevelColor;
+        }
+    }
+}

@@ -11,7 +11,7 @@ export class ToastService {
         });
     }
 
-    showDanger(textOrTpl: string | TemplateRef<any>, options: any = {}) {
+    showError(textOrTpl: string | TemplateRef<any>, options: any = {}) {
         this.show(textOrTpl, {
             classname: "bg-danger text-light",
             delay: 15000,
