@@ -6,6 +6,8 @@ import { SharedModule } from "../shared/shared.module";
 import { ListEvaluationsComponent } from './list-evaluations/list-evaluations.component';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap/";
 import { EvaluateStudentModalComponent } from './evaluate-student-modal/evaluate-student-modal.component';
+import { EvaluationsFilterComponent } from "./evaluations-filter/evaluations-filter.component";
+import { EvaluationFilterPipe } from "./evaluations-filter/evaluation-filter.pipe";
 
 const routes: Routes = [
     {path: "new", component: CreateEditEvaluationComponent, },
@@ -14,7 +16,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    declarations: [CreateEditEvaluationComponent, ListEvaluationsComponent, EvaluateStudentModalComponent],
+    declarations: [CreateEditEvaluationComponent, ListEvaluationsComponent, EvaluateStudentModalComponent, EvaluationsFilterComponent, EvaluationFilterPipe],
+    providers: [EvaluationFilterPipe],
     imports: [SharedModule, RouterModule.forChild(routes), NgbModule],
 })
 export class EvaluationModule {}

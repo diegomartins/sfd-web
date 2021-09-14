@@ -27,8 +27,7 @@ export class CreateEditEvaluationComponent implements OnInit {
             return;
         }
 
-        try {
-            await this.studentEvaluationService.registerStudentEvaluation(this.form.value);
+        this.studentEvaluationService.registerStudentEvaluation(this.form.value).subscribe(() => {
             this.toastService.showSuccess(`${this.form.value.name} registed for evaluation.`);
 
             if (this.multiMode) {
@@ -36,10 +35,10 @@ export class CreateEditEvaluationComponent implements OnInit {
             } else {
                 this.router.navigate(["/list"]);
             }
-
-        } catch(error) {
-            this.toastService.showError("Error registering for evaluation.");
-        }
+        }, (err) => {
+            this.toastService.showError(err.error?.message || "Error registering for evaluation.");
+            console.error(err);
+        });
     }
 
     private buildForm(): FormGroup {

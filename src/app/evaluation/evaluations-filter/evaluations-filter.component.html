@@ -1,0 +1,63 @@
+<div class="top-buttons">
+    <button class="btn clean-button" (click)="cleanFilters()">
+        Clean filters
+    </button>
+    <button
+        *ngIf="!collapsed"
+        class="btn collapse-button"
+        (click)="collapsed = true"
+    >
+        Hide filters
+    </button>
+</div>
+
+<div class="content">
+    <div *ngIf="!collapsed">
+        <form [formGroup]="form" (ngSubmit)="submit()">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    formControlName="name"
+                    placeholder="Enter the student's name"
+                    autocomplete="off"
+                />
+            </div>
+            <div class="form-group">
+                <label>Role</label>
+                <div>
+                    <app-select-dancing-role
+                        controlName="dancingRole"
+                    ></app-select-dancing-role>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="currentLevel">Current Level</label>
+                <app-select-level
+                    [shorten]="true"
+                    selectId="currentLevel"
+                    formControlName="currentLevel"
+                ></app-select-level>
+            </div>
+            <div class="form-group">
+                <label
+                    ><input type="checkbox" />Hide completed evaluations</label
+                >
+            </div>
+
+            <div class="col-sm-12">
+                <button class="btn btn-outline-primary">Search</button>
+            </div>
+        </form>
+    </div>
+    <div *ngIf="collapsed" (click)="collapsed = false">
+        Current filters
+        <div class="filter-values">
+            <div *ngFor="let value of form.value | evaluationFilter">
+                {{ value }}
+            </div>
+        </div>
+    </div>
+</div>

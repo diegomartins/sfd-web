@@ -33,6 +33,10 @@ const modulesToExport = [
   exports: [
     ...declarations,
     ...modulesToExport
+  ],
+  providers: [
+      DancingRolePipe,
+      LevelPipe
   ]
 })
 export class SharedModule { }

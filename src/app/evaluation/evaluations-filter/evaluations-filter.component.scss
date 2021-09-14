@@ -1,0 +1,19 @@
+.content {
+    display: block;
+    border: 1px solid lightgray;
+    padding: 5px;
+}
+
+.top-buttons {
+    display: flex;
+    justify-content: flex-end;
+    button {
+        text-decoration: underline;
+        font-size: 0.9rem;
+    }
+}
+
+.filter-values {
+    font-weight: 600;
+    font-size: 15px;
+}

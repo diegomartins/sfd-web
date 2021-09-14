@@ -1,22 +1,25 @@
-<div class="">
-
-    <div class="actions">
-        <a class="btn btn-primary" routerLink="/evaluation/new">Register student for evaluation</a>
+<div class="page">
+    <div class="filters">
+        <app-evaluations-filter></app-evaluations-filter>
     </div>
     <div class="results">
         <ul class="list-group">
-            <li class="list-group-item list-group-item-action p-4" role="button" *ngFor="let evaluation of results" (click)="openStudentEvaluationEntry(evaluation.id)">
+            <li class="list-group-item list-group-item-action p-3" role="button" *ngFor="let evaluation of results" (click)="openStudentEvaluationEntry(evaluation.id)">
                 <div class="evaluation-item d-flex">
                     <div class="personal-details me-auto">
                         <h5>{{evaluation.name}}</h5>
                         <small>{{evaluation.email}}</small>
                     </div>
                     <div class="dancing-details d-flex flex-column">
-                        <p  class="badge level {{evaluation.currentLevel}}">{{evaluation.currentLevel | level:true}}</p>
-                        <p class="badge dancing-role {{evaluation.dancingRole}}">{{evaluation.dancingRole | dancingRole}}</p>
+                        <span class="badge bg-primary" *ngIf="evaluation.newLevel">Done</span>
+                        <span  class="badge level {{evaluation.newLevel || evaluation.currentLevel}}">{{(evaluation.newLevel || evaluation.currentLevel) | level:true}}</span>
+                        <span class="badge dancing-role {{evaluation.dancingRole}}">{{evaluation.dancingRole | dancingRole}}</span>
                     </div>
                 </div>
             </li>
         </ul>
+    </div>
+    <div class="actions">
+        <a class="btn btn-primary btn-circle btn-md" routerLink="/evaluation/new">+</a>
     </div>
 </div>
