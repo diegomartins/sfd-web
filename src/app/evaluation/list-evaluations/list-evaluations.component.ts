@@ -7,7 +7,6 @@ import { IStudentEvaluation } from "src/app/shared/model/student-evaluation.inte
 import { ToastService } from "src/app/structure/toast/toast.service";
 import { EvaluateStudentModalComponent } from "../evaluate-student-modal/evaluate-student-modal.component";
 import { EvaluationListService } from "../evaluation-list.service";
-import { EvaluationFilter } from "../evaluations-filter/evaluation-filter.model";
 import { StudentEvaluationService } from "../student-evaluation.service";
 
 @Component({
@@ -31,7 +30,7 @@ export class ListEvaluationsComponent implements OnInit, OnDestroy {
             this.modalSubscription.unsubscribe();
         }
 
-        this.evaluationListService.$searchResults.unsubscribe;
+        this.evaluationListService.$searchResults.unsubscribe();
     }
 
 
